@@ -114,6 +114,10 @@ Noteworthy module changes
   a return value called ``diff`` was returned of type ``list``. To enable proper diff output, this was changed to
   type ``dict``; the original ``list`` is returned as ``diff.differences``.
 
+* ``vmware_vm_facts`` used to return dict of dict with virtual machine's facts. Ansible 2.8 and onwards will return list of dict with virtual machine's facts.
+  Please see module ``vmware_vm_facts`` documentation for example.
+
+
 Plugins
 =======
 
