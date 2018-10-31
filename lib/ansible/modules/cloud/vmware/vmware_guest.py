@@ -1720,7 +1720,7 @@ class PyVmomiHelper(PyVmomi):
                 diskspec.device.backing.datastore = datastore
                 diskspec.device.backing.fileName = vmdk_file_name
 
-            elif 'autoselect_datastore' in expected_disk_spec and expected_disk_spec['autoselect_datastore']:
+            elif expected_disk_spec.get('autoselect_datastore', False):
                 # User has specified autoselect datastore option
                 datastores = self.cache.get_all_objs(self.content, [vim.Datastore])
                 datastores = [x for x in datastores if
@@ -1730,15 +1730,9 @@ class PyVmomiHelper(PyVmomi):
                     self.module.fail_json(msg="Unable to find a datastore for disk at "
                                               "index %s when autoselecting" % disk_index)
                 datastore_freespace = 0
+                datastore = None
                 for ds in datastores:
-                    if (ds.summary.freeSpace > datastore_freespace) or (
-                            ds.summary.freeSpace == datastore_freespace and not datastore):
-                        # If datastore field is provided, filter destination datastores
-                        if 'datastore' in expected_disk_spec \
-                                and isinstance(expected_disk_spec['datastore'], str) \
-                                and ds.name.find(expected_disk_spec['datastore']) < 0:
-                            continue
-
+                    if ds.summary.freeSpace > datastore_freespace:
                         datastore = ds
                         datastore_name = datastore.name
                         datastore_freespace = ds.summary.freeSpace
@@ -1777,7 +1771,7 @@ class PyVmomiHelper(PyVmomi):
         parent_dc = datacenter
         datastore_name = datastore.name
         # Try to create folder for virtual machine and disks inside datastore
-        path_on_ds = '[' + datastore_name + ']' + vm_name
+        path_on_ds = '[' + datastore_name + ']'
         try:
             self.content.fileManager.MakeDirectory(name=path_on_ds,
                                                    datacenter=parent_dc,
