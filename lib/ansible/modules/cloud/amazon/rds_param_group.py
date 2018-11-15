@@ -48,31 +48,47 @@ options:
         - 'aurora5.6'
         - 'mariadb10.0'
         - 'mariadb10.1'
+        - 'mariadb10.2'
+        - 'mariadb10.3'
         - 'mysql5.1'
         - 'mysql5.5'
         - 'mysql5.6'
         - 'mysql5.7'
+        - 'mysql8.0'
         - 'oracle-ee-11.2'
         - 'oracle-ee-12.1'
+        - 'oracle-ee-12.2'
         - 'oracle-se-11.2'
         - 'oracle-se-12.1'
         - 'oracle-se1-11.2'
         - 'oracle-se1-12.1'
+        - 'oracle-se2-12.1'
+        - 'oracle-se2-12.2'
         - 'postgres9.3'
         - 'postgres9.4'
         - 'postgres9.5'
         - 'postgres9.6'
+        - 'postgres10'
         - 'sqlserver-ee-10.5'
         - 'sqlserver-ee-11.0'
+        - 'sqlserver-ee-12.0'
+        - 'sqlserver-ee-13.0'
+        - 'sqlserver-ee-14.0'
         - 'sqlserver-ex-10.5'
         - 'sqlserver-ex-11.0'
         - 'sqlserver-ex-12.0'
+        - 'sqlserver-ex-13.0'
+        - 'sqlserver-ex-14.0'
         - 'sqlserver-se-10.5'
         - 'sqlserver-se-11.0'
         - 'sqlserver-se-12.0'
+        - 'sqlserver-se-13.0'
+        - 'sqlserver-se-14.0'
         - 'sqlserver-web-10.5'
         - 'sqlserver-web-11.0'
         - 'sqlserver-web-12.0'
+        - 'sqlserver-web-13.0'
+        - 'sqlserver-web-14.0'
   immediate:
     description:
       - Whether to apply the changes immediately, or after the next reboot of any associated instances.
@@ -165,31 +181,47 @@ VALID_ENGINES = [
     'aurora5.6',
     'mariadb10.0',
     'mariadb10.1',
+    'mariadb10.2',
+    'mariadb10.3',
     'mysql5.1',
     'mysql5.5',
     'mysql5.6',
     'mysql5.7',
+    'mysql8.0',
     'oracle-ee-11.2',
     'oracle-ee-12.1',
+    'oracle-ee-12.2',
     'oracle-se-11.2',
     'oracle-se-12.1',
     'oracle-se1-11.2',
     'oracle-se1-12.1',
+    'oracle-se2-12.1',
+    'oracle-se2-12.2',
     'postgres9.3',
     'postgres9.4',
     'postgres9.5',
     'postgres9.6',
+    'postgres10',
     'sqlserver-ee-10.5',
     'sqlserver-ee-11.0',
+    'sqlserver-ee-12.0',
+    'sqlserver-ee-13.0',
+    'sqlserver-ee-14.0',
     'sqlserver-ex-10.5',
     'sqlserver-ex-11.0',
     'sqlserver-ex-12.0',
+    'sqlserver-ex-13.0',
+    'sqlserver-ex-14.0',
     'sqlserver-se-10.5',
     'sqlserver-se-11.0',
     'sqlserver-se-12.0',
+    'sqlserver-se-13.0',
+    'sqlserver-se-14.0',
     'sqlserver-web-10.5',
     'sqlserver-web-11.0',
     'sqlserver-web-12.0',
+    'sqlserver-web-13.0',
+    'sqlserver-web-14.0',
 ]
 
 INT_MODIFIERS = {
