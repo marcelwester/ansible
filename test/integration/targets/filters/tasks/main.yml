@@ -253,3 +253,13 @@
     that:
       - "unions|type_debug == 'list'"
       - "unions|length == 4"
+
+- name: Test password hash
+  vars:
+    sha512_hash: '$6$mysecretsalt$zeii.GqxRvlshLBHuPu8aNwdkkG9.BjGyfknta0deijW59AF3yjZa9GJa8Madx8sWinuaNkkCsXnWpt2f33lW/'
+  assert:
+    that:
+    - "'sample' | password_hash('md5', 'mysecret') == '$1$mysecret$ka6JElY8wF.3Ce3FKvRab/'"
+    - "'sample' | password_hash('blowfish', 'mysecretsalt1234567891') == '$2b$12$mysecretsalt123456789uPo2DaODkqAR0DEPKOYkFWf327i4/v9u'"
+    - "'sample' | password_hash('sha256', 'mysecretsalt') == '$5$mysecretsalt$ImwJrld25AlXvuuebhzXJxV2llwwJAGkO46kQdhymD6'"
+    - "'sample' | password_hash('sha512', 'mysecretsalt') == sha512_hash"

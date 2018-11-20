@@ -812,8 +812,9 @@ An idempotent method to generate unique hashes per system is to use a salt that 
 
     {{ 'secretpassword' | password_hash('sha512', 65534 | random(seed=inventory_hostname) | string) }}
 
-Hash types available depend on the master system running ansible,
-'hash' depends on hashlib password_hash depends on passlib (https://passlib.readthedocs.io/en/stable/lib/passlib.hash.html).
+Hash types available depends on the master system running Ansible,
+'hash' depends on `hashlib <https://docs.python.org/3.7/library/hashlib.html>`_
+and 'password_hash' depends on `Passlib <https://passlib.readthedocs.io/en/stable/lib/passlib.hash.html>`_.
 
 .. versionadded:: 2.7
 
@@ -821,8 +822,7 @@ Some hash types allow providing a rounds parameter::
 
     {{ 'secretpassword' | password_hash('sha256', 'mysecretsalt', rounds=10000) }}
 
-When`Passlib <https://passlib.readthedocs.io/en/stable/>`_ is installed
-`password_hash` supports any crypt scheme and parameter supported by 'Passlib'::
+When Passlib is installed `password_hash` supports any crypt scheme and parameter supported by 'Passlib'::
 
     {{ 'secretpassword' | password_hash('sha256_crypt', 'mysecretsalt', rounds=5000) }}
     {{ 'secretpassword' | password_hash('bcrypt', ident='2b', rounds=14) }}
